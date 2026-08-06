@@ -1,0 +1,372 @@
+.popupedit {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  min-width: 100%;
+  min-height: 100%;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+.popupPlace {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  min-width: 100%;
+  min-height: 100%;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+.popupProfilePicture {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  min-width: 100%;
+  min-height: 100%;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+.popupDeleteConfirmation {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  min-width: 100%;
+  min-height: 100%;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+.popup__container {
+  position: relative;
+  background-color: #fff;
+  width: 430px;
+  height: 330px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px 0px #000;
+}
+
+.popup__containerProfilePicture {
+  position: relative;
+  background-color: #fff;
+  width: 430px;
+  height: 272px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px 0px #000;
+}
+
+.popup__container-delete {
+  position: relative;
+  background-color: #fff;
+  width: 430px;
+  height: 181px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px 0px #000;
+}
+
+.popup__close-button {
+  background-color: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+}
+
+.popup__close-headerButton {
+  position: absolute;
+  top: -34px;
+  left: 432px;
+  padding: 0px;
+}
+
+.popup__close-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.popup__close-button:hover {
+  opacity: 50%;
+}
+
+.popup__container-title {
+  max-width: 330px;
+  margin: 34px auto auto 36px;
+
+  font-family: "InterDisplay", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  text-align: start;
+  color: #000000;
+}
+
+.popup__container-title-delete {
+  max-width: 358px;
+  margin: 34px auto 38px auto;
+
+  font-family: "InterDisplay", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 24px;
+  text-align: start;
+  color: #000000;
+}
+
+.popup__form-fieldset {
+  margin: 54px auto 13px 36px;
+  padding: 0px;
+  min-height: 124px;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.popup__form-fieldsetProfile {
+  margin: 54px auto 13px 36px;
+  padding: 0px;
+
+  background-color: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.popup__form-fieldsetBox {
+  display: block;
+  max-width: 365px;
+  max-height: 85px;
+}
+
+.popup__form-fieldsetInput {
+  border: 0px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+  padding-bottom: 13px;
+  width: 358px;
+
+  font-family: "InterDisplay", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 5px;
+  text-align: start;
+  color: #000;
+}
+
+.popup__form-fieldsetInput_error {
+  border-bottom: 1px solid red;
+}
+
+.popup__form-error {
+  display: block;
+  margin: 0px 0px 0px 0px;
+  padding: 0px;
+  height: 30px;
+
+  font-family: "InterDisplay", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.3;
+  text-align: left;
+  color: #ff0000;
+}
+
+.popup__save-button {
+  width: 358px;
+  height: 50px;
+  background-color: #000;
+  border: none;
+  padding: 0px;
+  margin: 0px 36px 36px 36px;
+
+  font-family: "InterDisplay", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 5px;
+  text-align: center;
+  color: #fff;
+}
+
+.popup__save-button:hover {
+  opacity: 50%;
+}
+
+.popup__save-button_disabled {
+  width: 358px;
+  height: 50px;
+  background-color: transparent;
+  background: none;
+  border: 1px solid #000;
+  padding: 0px;
+  opacity: 20%;
+  margin: 0px 36px 36px 36px;
+
+  font-family: "InterDisplay", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 5px;
+  text-align: center;
+  color: #000;
+}
+
+.photoFrame {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  min-width: 100%;
+  min-height: 100%;
+
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+.popup__opened {
+  display: flex;
+}
+
+.photoFrame__container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  max-width: 75vw;
+  max-height: 75vh;
+}
+
+.photoFrame__image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.photoFrame__close-button {
+  position: absolute;
+  top: -38px;
+  right: -32px;
+  z-index: 2;
+}
+
+.photoFrame__close-button:hover {
+  opacity: 50%;
+}
+
+.photoFrame__image {
+  max-width: 75vw;
+  max-height: 75vh;
+  display: block;
+}
+
+.photoFrame__text {
+  min-width: 292px;
+  margin: 10px auto 0px 0px;
+
+  font-family: "InterDisplay", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 5px;
+  text-align: start;
+  color: #fff;
+}
+
+@media screen and (max-width: 767px) {
+  .popup__container {
+    width: 282px;
+    height: 322px;
+  }
+
+  .popup__containerProfilePicture {
+    width: 282px;
+    height: 240px;
+  }
+
+  .popup__container-delete {
+    width: 282px;
+    height: 181px;
+  }
+
+  .popup__close-button {
+    top: -40px;
+    left: 254px;
+    width: 20px;
+    height: 20px;
+  }
+
+  .popup__close-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .popup__container-title {
+    max-width: 238px;
+    margin: 25px auto auto auto;
+
+    font-size: 18px;
+  }
+
+  .popup__container-title-delete {
+    max-width: 238px;
+    margin: 34px auto 38px auto;
+  }
+
+  .popup__form-fieldset {
+    margin: 67px auto auto auto;
+  }
+
+  .popup__form-fieldsetBox {
+    margin: 0px 10px 0px 20px;
+  }
+
+  .popup__form-fieldsetInput {
+    width: 238px;
+    margin: 0px auto;
+  }
+
+  .popup__form-error {
+    width: 242px;
+  }
+
+  .popup__form-fieldsetProfile {
+    margin: 54px auto auto auto;
+  }
+
+  .popup__save-button {
+    width: 238px;
+    height: 46px;
+
+    margin: 10px 21px 20px 21px;
+
+    font-size: 14px;
+  }
+
+  .photoFrame__close-button {
+    top: -29px;
+    right: -30px;
+  }
+}

@@ -1,121 +1,74 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import logo from './images/Header-Around_The_Us_Logo.png'
+import imageAvatar from './images/Content-Avatar_Jacques.png'
+import imageButtonAvatar from './images/Content-Profile-EditAvatarButton.png'
+import imageButtonEditProfile from './images/Content-Profile-EditButton.png'
+import imageButtonAddCard from './images/Content-Profile-AddButton.png'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    
+    <div className="page">
+          <header className="header">
+            <div className="header__box">
+              <img
+                src={logo}
+                className="header__logo"
+                alt="Around The US logotype"
+              />
+            </div>
+          </header>
+          <main className="content">
+            <section className="profile">
+              <div className="profile__avatar-container">
+                <img
+                  src={imageAvatar}
+                  className="profile__avatar"
+                  alt="Foto de perfil"
+                />
+                <button type="button" className="profile__avatar-button">
+                  <img
+                    src={imageButtonAvatar}
+                    className="profile__avatar-button-icon"
+                    alt="Editar foto de perfil"
+                  />
+                </button>
+              </div>
+              <div className="profile__info">
+                <h1 className="profile__info-name">Jacques Cousteau</h1>
+                <button type="button" className="profile__editButton">
+                  <img
+                    src={imageButtonEditProfile}
+                    className="profile__editButton-image"
+                    alt="Editar Profile"
+                  />
+                </button>
+                <h2 className="profile__info-about">Explorer</h2>
+              </div>
+              <button type="button" className="profile__addButton">
+                <img
+                  src={imageButtonAddCard}
+                  className="profile__addButton-image"
+                  alt="Adicionar Imagem"
+                />
+              </button>
+            </section>
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
+            <section className="gallery">
+              <div className="gallery__grid"></div>
+            </section>
+          </main>
+          <footer className="footer">
+            <p className="footer__copyright">
+              &#169; 2026. Renato Falchi Correia de Oliveira
+            </p>
+          </footer>
+          
+          
         </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+    
   )
 }
 
