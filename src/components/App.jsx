@@ -1,25 +1,17 @@
-import { useState } from 'react'
-import logo from './images/Header-Around_The_Us_Logo.png'
-import imageAvatar from './images/Content-Avatar_Jacques.png'
-import imageButtonAvatar from './images/Content-Profile-EditAvatarButton.png'
-import imageButtonEditProfile from './images/Content-Profile-EditButton.png'
-import imageButtonAddCard from './images/Content-Profile-AddButton.png'
+import Header from './Header/Header.jsx'
+
+
+import imageAvatar from '../images/Content-Avatar_Jacques.png'
+import imageButtonAvatar from '../images/Content-Profile-EditAvatarButton.png'
+import imageButtonEditProfile from '../images/Content-Profile-EditButton.png'
+import imageButtonAddCard from '../images/Content-Profile-AddButton.png'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     
     <div className="page">
-          <header className="header">
-            <div className="header__box">
-              <img
-                src={logo}
-                className="header__logo"
-                alt="Around The US logotype"
-              />
-            </div>
-          </header>
+          <Header/>
           <main className="content">
             <section className="profile">
               <div className="profile__avatar-container">
