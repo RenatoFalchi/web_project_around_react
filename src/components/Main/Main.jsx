@@ -1,0 +1,49 @@
+import imageAvatar from '../../images/Content-Avatar_Jacques.png'
+import imageButtonAvatar from '../../images/Content-Profile-EditAvatarButton.png'
+import imageButtonEditProfile from '../../images/Content-Profile-EditButton.png'
+import imageButtonAddCard from '../../images/Content-Profile-AddButton.png'
+
+export default function Main () {
+    return(
+        <main className="content">
+                    <section className="profile">
+                      <div className="profile__avatar-container">
+                        <img
+                          src={imageAvatar}
+                          className="profile__avatar"
+                          alt="Foto de perfil"
+                        />
+                        <button type="button" className="profile__avatar-button">
+                          <img
+                            src={imageButtonAvatar}
+                            className="profile__avatar-button-icon"
+                            alt="Editar foto de perfil"
+                          />
+                        </button>
+                      </div>
+                      <div className="profile__info">
+                        <h1 className="profile__info-name">Jacques Cousteau</h1>
+                        <button type="button" className="profile__editButton">
+                          <img
+                            src={imageButtonEditProfile}
+                            className="profile__editButton-image"
+                            alt="Editar Profile"
+                          />
+                        </button>
+                        <h2 className="profile__info-about">Explorer</h2>
+                      </div>
+                      <button type="button" className="profile__addButton">
+                        <img
+                          src={imageButtonAddCard}
+                          className="profile__addButton-image"
+                          alt="Adicionar Imagem"
+                        />
+                      </button>
+                    </section>
+        
+                    <section className="gallery">
+                      <div className="gallery__grid"></div>
+                    </section>
+                  </main>
+    )
+}
