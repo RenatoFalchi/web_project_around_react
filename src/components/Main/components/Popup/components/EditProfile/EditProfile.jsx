@@ -1,6 +1,6 @@
 export default function EditProfile () {
     return(
-        <form id="editForm" className="popup__form">
+        <form className="popup__form" id="editForm" name="editProfileForm" noValidate >
             <fieldset className="popup__form-fieldset">
               <div className="popup__form-fieldsetBox">
                 <input

@@ -1,6 +1,6 @@
 export default function NewCard() {
     return(
-        <form id="addForm" className="popup__form">
+        <form className="popup__form" id="addForm" name="addCardForm" noValidate >
             <fieldset className="popup__form-fieldset">
               <div className="popup__form-fieldsetBox">
                 <input

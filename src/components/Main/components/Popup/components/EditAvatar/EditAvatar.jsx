@@ -1,6 +1,6 @@
-export default function () {
+export default function EditAvatar () {
     return(
-        <form id="avatarForm" className="popup__form">
+        <form className="popup__form" id="avatarForm" name="editAvatarForm" noValidate>
             <fieldset className="popup__form-fieldsetProfile">
               <div className="popup__form-fieldsetBox">
                 <input
