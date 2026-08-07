@@ -1,7 +1,7 @@
 import Header from './Header/Header.jsx'
 import Main from './Main/Main.jsx'
 import Footer from './Footer/Footer.jsx'
-import Popup from './Main/components/Popup/Popup.jsx'
+
 
 function App() {
 
@@ -11,7 +11,7 @@ function App() {
           <Header/>
           <Main></Main>
           <Footer/>
-          <Popup/>
+          
     </div>
     
   )

@@ -1,9 +1,27 @@
+import { useState } from 'react'
 import imageAvatar from '../../images/Content-Avatar_Jacques.png'
 import imageButtonAvatar from '../../images/Content-Profile-EditAvatarButton.png'
 import imageButtonEditProfile from '../../images/Content-Profile-EditButton.png'
 import imageButtonAddCard from '../../images/Content-Profile-AddButton.png'
+import Popup from './components/Popup/Popup.jsx'
+import NewCard from './components/Popup/components/NewCard/NewCard.jsx'
+import EditProfile from './components/Popup/components/EditProfile/EditProfile.jsx'
+import EditAvatar from './components/Popup/components/EditAvatar/EditAvatar.jsx'
 
 export default function Main () {
+  const [popup, setPopup] = useState(null);
+
+  const newCardPopup = { title: "Novo Cartão", children: <NewCard/>}
+  const editProfilePopup = {title: "Editar Perfil", children: <EditProfile/>}
+  const editAvatarPopup = {title: "Editar Avatar", children:<EditAvatar/>}
+
+  function handleOpenPopup(popup){
+    setPopup(popup);
+  }
+
+  function handleClosePopup(){
+    setPopup(null);
+  }
     return(
         <main className="content">
                     <section className="profile">
@@ -13,7 +31,7 @@ export default function Main () {
                           className="profile__avatar"
                           alt="Foto de perfil"
                         />
-                        <button type="button" className="profile__avatar-button">
+                        <button type="button" className="profile__avatar-button" onClick={() => handleOpenPopup(editAvatarPopup)}>
                           <img
                             src={imageButtonAvatar}
                             className="profile__avatar-button-icon"
@@ -23,7 +41,7 @@ export default function Main () {
                       </div>
                       <div className="profile__info">
                         <h1 className="profile__info-name">Jacques Cousteau</h1>
-                        <button type="button" className="profile__editButton">
+                        <button type="button" className="profile__editButton" onClick={() => handleOpenPopup(editProfilePopup)}>
                           <img
                             src={imageButtonEditProfile}
                             className="profile__editButton-image"
@@ -32,7 +50,7 @@ export default function Main () {
                         </button>
                         <h2 className="profile__info-about">Explorer</h2>
                       </div>
-                      <button type="button" className="profile__addButton">
+                      <button type="button" className="profile__addButton" onClick={() => handleOpenPopup(newCardPopup)}>
                         <img
                           src={imageButtonAddCard}
                           className="profile__addButton-image"
@@ -44,6 +62,11 @@ export default function Main () {
                     <section className="gallery">
                       <div className="gallery__grid"></div>
                     </section>
+                    {popup && (
+                      <Popup onClose={handleClosePopup} title={popup.title}>
+                        {popup.children}
+                      </Popup>
+                    )}
                   </main>
     )
 }

@@ -8,7 +8,7 @@ export default function EditAvatar () {
                   type="url"
                   placeholder="Link de imagem"
                   id="avatarLink"
-                  maxlength="2047"
+                  maxLength="2047"
                   required
                   name="avatarLink"
                 />

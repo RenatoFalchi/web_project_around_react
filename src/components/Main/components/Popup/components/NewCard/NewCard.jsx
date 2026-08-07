@@ -8,8 +8,8 @@ export default function NewCard() {
                   type="text"
                   placeholder="Título"
                   id="placeTitle"
-                  minlength="2"
-                  maxlength="30"
+                  minLength="2"
+                  maxLength="30"
                   required
                   name="placeTitle"
                 />
@@ -21,7 +21,7 @@ export default function NewCard() {
                   type="url"
                   placeholder="Link de imagem"
                   id="placeImage"
-                  maxlength="2047"
+                  maxLength="2047"
                   required
                   name="placeImage"
                 />
