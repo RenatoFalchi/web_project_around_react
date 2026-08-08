@@ -8,6 +8,7 @@ import NewCard from './components/Popup/components/NewCard/NewCard.jsx'
 import EditProfile from './components/Popup/components/EditProfile/EditProfile.jsx'
 import EditAvatar from './components/Popup/components/EditAvatar/EditAvatar.jsx'
 import Card from './components/Card/Card.jsx'
+import ImagePopup from './components/Popup/components/ImagePopup/ImagePopup.jsx'
 
 const cards = [
   {
@@ -27,16 +28,24 @@ const cards = [
     createdAt: '2019-07-05T08:11:58.324Z',
   },
 ];
-console.log(cards);
+
 
 export default function Main () {
   const [popup, setPopup] = useState(null);
 
   const newCardPopup = { title: "Novo Cartão", children: <NewCard/>}
   const editProfilePopup = {title: "Editar Perfil", children: <EditProfile/>}
-  const editAvatarPopup = {title: "Editar Avatar", children:<EditAvatar/>}
-
+  const editAvatarPopup = {title: "Alterar a foto do perfil", children:<EditAvatar/>}
+  
+  function onCardClick (card) {
+    const imageContent = {
+      children: <ImagePopup card={card}/>
+    };
+    setPopup(imageContent);
+  }
+  
   function handleOpenPopup(popup){
+    
     setPopup(popup);
   }
 
@@ -83,7 +92,7 @@ export default function Main () {
                     <section className="gallery">
                       <div className="gallery__grid">
                         {cards.map((card) => (
-                          <Card key={card._id} card={card}/>
+                          <Card key={card._id} card={card} onClick={onCardClick}/>
                         ))}
                       </div>
                     </section>
