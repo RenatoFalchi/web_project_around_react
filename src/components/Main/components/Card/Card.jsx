@@ -6,7 +6,7 @@ export default function Card(props) {
 
     return(
         <div className="card">
-          <img className="card__image" src={link} alt="" onClick={() => onClick(card/* {name, link} */)} />
+          <img className="card__image" src={link} alt={name} onClick={() => onClick(card)} />
           <h2 className="card__text">{name}</h2>
           <button 
             type="button"

@@ -3,7 +3,7 @@ export default function Popup(props) {
 
     return(
         <div className="popup">
-            <div className={`popup__container ${!title ? "photoFrame__container" : ""}`}>
+            <div className={!title ? "photoFrame__container" : "popup__container"}>
                 <button
                     type="button"
                     id="closeButton"

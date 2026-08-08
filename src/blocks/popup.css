@@ -26,7 +26,7 @@
 .popup__close-button {
   position:absolute;
   top: -34px;
-  left: 432px;
+  right: -34px;
   padding: 0px;
   width: 32px;
   height: 32px;
@@ -182,40 +182,7 @@
   color: #000000;
 }
 
-/* .photoFrame {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.5);
-  min-width: 100%;
-  min-height: 100%;
 
-  position: fixed;
-  top: 0;
-  right: 0;
-} */
-
-/* .photoFrame__image-wrapper {
-  position: relative;
-  display: inline-block;
-} */
-
-/* .photoFrame__close-button {
-  position: absolute;
-  top: -38px;
-  right: -32px;
-  z-index: 2;
-} */
-
-/* .photoFrame__close-button:hover {
-  opacity: 50%;
-} */
-
-/* MEDIA QUERY BOTÃO .photoFrame__close-button {
-    top: -29px;
-    right: -30px;
-  } */
 
 .photoFrame__container {
   position: relative;
@@ -266,7 +233,7 @@
 
   .popup__close-button {
     top: -40px;
-    left: 254px;
+    right: 8px;
     width: 20px;
     height: 20px;
   }
