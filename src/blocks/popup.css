@@ -182,7 +182,45 @@
   color: #000000;
 }
 
+.popup__delete-button{
+  width: 358px;
+  height: 50px;
+  background-color: #000;
+  border: none;
+  padding: 0px;
+  margin: 50px 36px 36px 36px;
 
+  font-family: "InterDisplay", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 5px;
+  text-align: center;
+  color: #fff;
+}
+
+.popup__delete-button:hover {
+  opacity: 50%;
+}
+
+.popup__delete-button_disabled {
+  width: 358px;
+  height: 50px;
+  background-color: transparent;
+  background: none;
+  border: 1px solid #000;
+  padding: 0px;
+  opacity: 20%;
+  margin: 0px 36px 36px 36px;
+
+  font-family: "InterDisplay", Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 5px;
+  text-align: center;
+  color: #000;
+}
 
 .photoFrame__container {
   position: relative;
@@ -218,7 +256,7 @@
 @media screen and (max-width: 767px) {
   .popup__container {
     width: 282px;
-    min-height: 200px;
+    min-height: 20px;
   }
 
   .popup__containerProfilePicture {
@@ -280,5 +318,13 @@
     font-size: 14px;
   }
 
+  .popup__delete-button {
+    width: 238px;
+    height: 46px;
+
+    margin: 20px 21px 20px 21px;
+
+    font-size: 14px;
+  }
 
 }

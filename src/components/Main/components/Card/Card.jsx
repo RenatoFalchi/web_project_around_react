@@ -1,7 +1,7 @@
 export default function Card(props) {
 
     const {name, link, isLiked } = props.card;
-    const {onClick, card} = props;
+    const {onClick, onDeleteClick, card} = props;
     
 
     return(
@@ -14,7 +14,8 @@ export default function Card(props) {
             /> 
           <button 
             type="button"
-            className="card__delete-button"
+            className="card__delete-button" 
+            onClick={()=> onDeleteClick(card)}
             />       
         </div>
     )

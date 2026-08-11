@@ -9,6 +9,7 @@ import EditProfile from './components/Popup/components/EditProfile/EditProfile.j
 import EditAvatar from './components/Popup/components/EditAvatar/EditAvatar.jsx'
 import Card from './components/Card/Card.jsx'
 import ImagePopup from './components/Popup/components/ImagePopup/ImagePopup.jsx'
+import RemoveCard from './components/Popup/components/RemoveCard/RemoveCard.jsx'
 
 const cards = [
   {
@@ -36,7 +37,16 @@ export default function Main () {
   const newCardPopup = { title: "Novo Cartão", children: <NewCard/>}
   const editProfilePopup = {title: "Editar Perfil", children: <EditProfile/>}
   const editAvatarPopup = {title: "Alterar a foto do perfil", children:<EditAvatar/>}
-  
+  const removeCardPopup = {title:"Tem Certeza?", children:<RemoveCard/>}
+
+  function onDeleteClick(card){
+    const deleteContent = {
+      title:"Tem certeza?",
+      children:<RemoveCard card={card}/>
+    };
+    setPopup(deleteContent);
+  }
+
   function onCardClick (card) {
     const imageContent = {
       children: <ImagePopup card={card}/>
@@ -92,7 +102,7 @@ export default function Main () {
                     <section className="gallery">
                       <div className="gallery__grid">
                         {cards.map((card) => (
-                          <Card key={card._id} card={card} onClick={onCardClick}/>
+                          <Card key={card._id} card={card} onClick={onCardClick} onDeleteClick={onDeleteClick} />
                         ))}
                       </div>
                     </section>
