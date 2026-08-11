@@ -1,16 +1,85 @@
-# React + Vite
+Tripleten web_project_around_react
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sprint 13 — Introdução ao React 1️⃣ — Projeto: Sprint 13 — Renato Falchi Correia de Oliveira
 
-Currently, two official plugins are available:
+Este projeto dá continuidade ao desenvolvimento do Around The U.S., agora migrando a aplicação da versão em JavaScript puro (OOP) para React. O foco desta sprint foi reestruturar a interface em componentes reutilizáveis, controlar o estado da aplicação com hooks e implementar a exibição condicional dos popups através de um único componente genérico.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+2️⃣ — Objetivo do projeto
 
-## React Compiler
+Reconstruir a estrutura da aplicação utilizando React, com foco em:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Dividir a interface em componentes reutilizáveis (Card, Popup, formulários)
 
-## Expanding the ESLint configuration
+Controlar a exibição dos popups através de estado (useState) no componente principal
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Implementar um componente Popup genérico, capaz de renderizar diferentes conteúdos (formulários, imagem ampliada, confirmação de exclusão) via prop children
+
+Exibir o popup de imagem ampliada ao clicar em um cartão
+
+Exibir o popup de confirmação de exclusão ao clicar no botão de deletar um cartão
+
+Passar dados entre componentes filho e pai através de props e callbacks
+
+3️⃣ — Funcionalidades implementadas
+
+🖼️ Componente Main
+
+Componente principal da aplicação, responsável por:
+
+Armazenar e renderizar a lista de cartões
+
+Controlar qual popup está aberto no momento através de estado (popup)
+
+Centralizar as funções de abertura e fechamento dos popups (handleOpenPopup, handleClosePopup)
+
+Definir o conteúdo (title e children) de cada popup antes de abri-lo
+
+🃏 Componente Card
+
+Renderiza a imagem, o nome e os botões de curtir e deletar de cada cartão
+
+Ao clicar na imagem, aciona o callback onClick recebido via props, abrindo o popup de imagem ampliada
+
+Ao clicar no botão de deletar, aciona o callback onDeleteClick, abrindo o popup de confirmação de exclusão
+
+🪟 Componente Popup
+
+Componente genérico e reutilizável, responsável por renderizar qualquer conteúdo de popup
+
+Recebe title, children e onClose via props
+
+Alterna entre as classes de estilo popup__container e photoFrame__container dependendo do tipo de conteúdo exibido
+
+🖼️ Componente ImagePopup
+
+Exibe a imagem ampliada e a legenda do cartão clicado
+
+Recebe o cartão selecionado via props
+
+🗑️ Componente RemoveCard
+
+Renderizado dentro do Popup ao clicar no botão de deletar de um cartão
+
+Por enquanto, apenas exibe o botão de confirmação "Sim" (lógica de exclusão ainda não implementada)
+
+📝 Componentes de formulário (NewCard, EditProfile, EditAvatar)
+
+Renderizados dentro do Popup para adicionar novo cartão, editar informações do perfil e alterar o avatar
+
+4️⃣ — Tecnologias utilizadas
+
+HTML5 Estrutura semântica da aplicação.
+
+CSS3 Estilização com BEM, media queries, grid, flexbox e responsividade completa.
+
+JavaScript (ES6+) Manipulação de dados e lógica dos componentes.
+
+React Componentização da interface, controle de estado com useState, comunicação entre componentes via props e callbacks.
+
+Vite Ambiente de build e desenvolvimento do projeto.
+
+GitHub Pages Hospedagem da versão final do projeto.
+
+5️⃣ — Deploy do projeto
+
+🔗 https://renatofalchi.github.io/web_project_around_react/
