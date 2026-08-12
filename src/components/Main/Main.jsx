@@ -39,12 +39,22 @@ export default function Main () {
   const editAvatarPopup = {title: "Alterar a foto do perfil", children:<EditAvatar/>}
   const removeCardPopup = {title:"Tem Certeza?", children:<RemoveCard/>}
 
+
+  function handleOpenPopup(popup){
+    
+    setPopup(popup);
+  }
+
+  function handleClosePopup(){
+    setPopup(null);
+  }
+
   function onDeleteClick(card){
     const deleteContent = {
       title:"Tem certeza?",
       children:<RemoveCard card={card}/>
     };
-    setPopup(deleteContent);
+    handleOpenPopup(deleteContent);
   }
 
   function onCardClick (card) {
@@ -54,14 +64,7 @@ export default function Main () {
     setPopup(imageContent);
   }
   
-  function handleOpenPopup(popup){
-    
-    setPopup(popup);
-  }
-
-  function handleClosePopup(){
-    setPopup(null);
-  }
+  
     return(
         <main className="content">
                     <section className="profile">
