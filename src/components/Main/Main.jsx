@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import api from "../../utils/api.jsx"
 import imageAvatar from '../../images/Content-Avatar_Jacques.png'
 import imageButtonAvatar from '../../images/Content-Profile-EditAvatarButton.png'
 import imageButtonEditProfile from '../../images/Content-Profile-EditButton.png'
@@ -11,28 +12,21 @@ import Card from './components/Card/Card.jsx'
 import ImagePopup from './components/Popup/components/ImagePopup/ImagePopup.jsx'
 import RemoveCard from './components/Popup/components/RemoveCard/RemoveCard.jsx'
 
-const cards = [
-  {
-    isLiked: false,
-    _id: '5d1f0611d321eb4bdcd707dd',
-    name: 'Yosemite Valley',
-    link: 'https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_yosemite.jpg',
-    owner: '5d1f0611d321eb4bdcd707dd',
-    createdAt: '2019-07-05T08:10:57.741Z',
-  },
-  {
-    isLiked: false,
-    _id: '5d1f064ed321eb4bdcd707de',
-    name: 'Lake Louise',
-    link: 'https://practicum-content.s3.us-west-1.amazonaws.com/web-code/moved_lake-louise.jpg',
-    owner: '5d1f0611d321eb4bdcd707dd',
-    createdAt: '2019-07-05T08:11:58.324Z',
-  },
-];
 
 
 export default function Main () {
   const [popup, setPopup] = useState(null);
+  const [cards, setCards] = useState([]);
+
+  useEffect(()=>{
+    api.getInitialCards()
+      .then((data)=>{
+        setCards(data);
+      })
+      .catch((err)=>{
+        console.log(err);
+      });
+  },[]);
 
   const newCardPopup = { title: "Novo Cartão", children: <NewCard/>}
   const editProfilePopup = {title: "Editar Perfil", children: <EditProfile/>}
