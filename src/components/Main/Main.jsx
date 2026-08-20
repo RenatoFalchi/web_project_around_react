@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useContext } from 'react'
 import api from "../../utils/api.jsx"
-import imageAvatar from '../../images/Content-Avatar_Jacques.png'
+import { currentUserContext } from '../../contexts/CurrentUserContext.jsx'
 import imageButtonAvatar from '../../images/Content-Profile-EditAvatarButton.png'
 import imageButtonEditProfile from '../../images/Content-Profile-EditButton.png'
 import imageButtonAddCard from '../../images/Content-Profile-AddButton.png'
@@ -28,6 +28,9 @@ export default function Main () {
       });
   },[]);
 
+  const currentUserInfo = useContext(currentUserContext);
+
+  
   const newCardPopup = { title: "Novo Cartão", children: <NewCard/>}
   const editProfilePopup = {title: "Editar Perfil", children: <EditProfile/>}
   const editAvatarPopup = {title: "Alterar a foto do perfil", children:<EditAvatar/>}
@@ -63,7 +66,7 @@ export default function Main () {
                     <section className="profile">
                       <div className="profile__avatar-container">
                         <img
-                          src={imageAvatar}
+                          src={currentUserInfo.avatar}
                           className="profile__avatar"
                           alt="Foto de perfil"
                         />
@@ -76,7 +79,7 @@ export default function Main () {
                         </button>
                       </div>
                       <div className="profile__info">
-                        <h1 className="profile__info-name">Jacques Cousteau</h1>
+                        <h1 className="profile__info-name">{currentUserInfo.name}</h1>
                         <button type="button" className="profile__editButton" onClick={() => handleOpenPopup(editProfilePopup)}>
                           <img
                             src={imageButtonEditProfile}
@@ -84,7 +87,7 @@ export default function Main () {
                             alt="Editar Profile"
                           />
                         </button>
-                        <h2 className="profile__info-about">Explorer</h2>
+                        <h2 className="profile__info-about">{currentUserInfo.about}</h2>
                       </div>
                       <button type="button" className="profile__addButton" onClick={() => handleOpenPopup(newCardPopup)}>
                         <img
