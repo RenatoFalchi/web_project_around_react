@@ -7,7 +7,7 @@ import Footer from './Footer/Footer.jsx'
 
 function App() {
 
-  const [currentUser, setCurrentUser] = useState();
+  const [currentUser, setCurrentUser] = useState({});
 
   useEffect(()=>{
     api.getUserInfo()
