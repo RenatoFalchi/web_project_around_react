@@ -13,7 +13,7 @@ export default function Card(props) {
           <h2 className="card__text">{name}</h2>
           <button 
             type="button"
-            className="card__like-button"
+            className={cardLikeButtonClassName}
             /> 
           <button 
             type="button"
