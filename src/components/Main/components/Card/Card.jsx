@@ -3,6 +3,9 @@ export default function Card(props) {
     const {name, link, isLiked } = props.card;
     const {onClick, onDeleteClick, card} = props;
     
+    const cardLikeButtonClassName = `card__like-button ${
+      isLiked ? 'card__like-button_active' : ''
+    }`;
 
     return(
         <div className="card">
