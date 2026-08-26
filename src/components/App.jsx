@@ -7,18 +7,18 @@ import Footer from './Footer/Footer.jsx'
 
 function App() {
 
+  const [popup, setPopup] = useState(null);
+
+  function handleOpenPopup(popup){
+      setPopup(popup);
+    }
+  
+    function handleClosePopup(){
+      setPopup(null);
+    }
+
   const [currentUser, setCurrentUser] = useState({});
-
-/*   useEffect(()=>{
-    api.getUserInfo()
-      .then((data)=>{
-        setCurrentUser(data);
-      })
-      .catch((err)=>{
-        console.log(err);
-      });
-  },[]); */
-
+  
   useEffect(() => {
     (async () => {
       await api.getUserInfo().then((data) => {
@@ -31,16 +31,23 @@ function App() {
     (async () => {
       await api.updateUserInfo(data).then((newData) => {
         setCurrentUser(newData);
+        handleClosePopup();
       });
     })();
   };
   
+  
+
   return (
     
     <currentUserContext.Provider value={{currentUser, handleUpdateUser}}>
     <div className="page">
           <Header/>
-          <Main></Main>
+          <Main
+            onOpenPopup={handleOpenPopup}
+            onClosePopup={handleClosePopup}
+            popup={popup}
+            />
           <Footer/>
           
     </div>

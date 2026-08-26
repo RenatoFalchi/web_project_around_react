@@ -14,8 +14,10 @@ import RemoveCard from './components/Popup/components/RemoveCard/RemoveCard.jsx'
 
 
 
-export default function Main () {
-  const [popup, setPopup] = useState(null);
+export default function Main (props) {
+  
+  const { popup, onOpenPopup, onClosePopup } = props;
+
   const [cards, setCards] = useState([]);
 
   useEffect(()=>{
@@ -55,20 +57,14 @@ export default function Main () {
   const removeCardPopup = {title:"Tem Certeza?", children:<RemoveCard/>}
 
 
-  function handleOpenPopup(popup){
-    setPopup(popup);
-  }
-
-  function handleClosePopup(){
-    setPopup(null);
-  }
+  
 
   function onDeleteClick(card){
     const deleteContent = {
       title:"Tem certeza?",
       children:<RemoveCard card={card}/>
     };
-    handleOpenPopup(deleteContent);
+    onOpenPopup(deleteContent);
   }
 
   function onCardClick (card) {
@@ -88,7 +84,7 @@ export default function Main () {
                           className="profile__avatar"
                           alt="Foto de perfil"
                         />
-                        <button type="button" className="profile__avatar-button" onClick={() => handleOpenPopup(editAvatarPopup)}>
+                        <button type="button" className="profile__avatar-button" onClick={() => onOpenPopup(editAvatarPopup)}>
                           <img
                             src={imageButtonAvatar}
                             className="profile__avatar-button-icon"
@@ -98,7 +94,7 @@ export default function Main () {
                       </div>
                       <div className="profile__info">
                         <h1 className="profile__info-name">{currentUser.name}</h1>
-                        <button type="button" className="profile__editButton" onClick={() => handleOpenPopup(editProfilePopup)}>
+                        <button type="button" className="profile__editButton" onClick={() => onOpenPopup(editProfilePopup)}>
                           <img
                             src={imageButtonEditProfile}
                             className="profile__editButton-image"
@@ -107,7 +103,7 @@ export default function Main () {
                         </button>
                         <h2 className="profile__info-about">{currentUser.about}</h2>
                       </div>
-                      <button type="button" className="profile__addButton" onClick={() => handleOpenPopup(newCardPopup)}>
+                      <button type="button" className="profile__addButton" onClick={() => onOpenPopup(newCardPopup)}>
                         <img
                           src={imageButtonAddCard}
                           className="profile__addButton-image"
@@ -124,7 +120,7 @@ export default function Main () {
                       </div>
                     </section>
                     {popup && (
-                      <Popup onClose={handleClosePopup} title={popup.title}>
+                      <Popup onClose={onClosePopup} title={popup.title}>
                         {popup.children}
                       </Popup>
                     )}
