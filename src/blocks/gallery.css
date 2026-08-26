@@ -69,6 +69,11 @@
   padding: 0px;
 }
 
+.card__like-button_active {
+  background-image: url('../images/Content-Card-LikeButtonActive.svg');
+}
+
+
 .card__like-button:hover {
   opacity: 50%;
 }
