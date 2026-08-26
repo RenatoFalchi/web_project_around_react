@@ -46,7 +46,7 @@ export default function Main () {
       .catch((error) => console.log(error));
   }
 
-  const currentUserInfo = useContext(currentUserContext);
+  const { currentUser } = useContext(currentUserContext);
 
   
   const newCardPopup = { title: "Novo Cartão", children: <NewCard/>}
@@ -84,7 +84,7 @@ export default function Main () {
                     <section className="profile">
                       <div className="profile__avatar-container">
                         <img
-                          src={currentUserInfo.avatar}
+                          src={currentUser.avatar}
                           className="profile__avatar"
                           alt="Foto de perfil"
                         />
@@ -97,7 +97,7 @@ export default function Main () {
                         </button>
                       </div>
                       <div className="profile__info">
-                        <h1 className="profile__info-name">{currentUserInfo.name}</h1>
+                        <h1 className="profile__info-name">{currentUser.name}</h1>
                         <button type="button" className="profile__editButton" onClick={() => handleOpenPopup(editProfilePopup)}>
                           <img
                             src={imageButtonEditProfile}
@@ -105,7 +105,7 @@ export default function Main () {
                             alt="Editar Profile"
                           />
                         </button>
-                        <h2 className="profile__info-about">{currentUserInfo.about}</h2>
+                        <h2 className="profile__info-about">{currentUser.about}</h2>
                       </div>
                       <button type="button" className="profile__addButton" onClick={() => handleOpenPopup(newCardPopup)}>
                         <img
