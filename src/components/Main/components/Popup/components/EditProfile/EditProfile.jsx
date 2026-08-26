@@ -3,10 +3,11 @@ import { currentUserContext } from "../../../../../../contexts/CurrentUserContex
 
 
 export default function EditProfile () {
-  const currentUser = useContext(currentUserContext);
+  const userContext = useContext(currentUserContext);
+  const { currentUser, handleUpdateUser } = userContext;
 
-  const [name, setName] = useState(currentUser.name);
-  const [description, setDescription] = useState(currentUser.about);
+  const [name, setName] = useState(userContext.name);
+  const [description, setDescription] = useState(userContext.about);
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -15,8 +16,15 @@ export default function EditProfile () {
   const handleDescriptionChange = (event) => {
     setDescription(event.target.value);
   };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    handleUpdateUser({ name, about: description });
+  };
+
     return(
-        <form className="popup__form" id="editForm" name="editProfileForm" noValidate >
+        <form className="popup__form" id="editForm" name="editProfileForm" noValidate onSubmit={handleSubmit} >
             <fieldset className="popup__form-fieldset">
               <div className="popup__form-fieldsetBox">
                 <input
