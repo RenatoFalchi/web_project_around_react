@@ -38,6 +38,14 @@ export default function Main () {
       .catch((error) => console.log(error));
   }
 
+  async function handleCardDelete (card) {
+    await api.deleteCard(card._id)
+      .then(()=>{
+        setCards((state) => state.filter((currentCard) => currentCard._id !== card._id));
+      })
+      .catch((error) => console.log(error));
+  }
+
   const currentUserInfo = useContext(currentUserContext);
 
   
@@ -111,7 +119,7 @@ export default function Main () {
                     <section className="gallery">
                       <div className="gallery__grid">
                         {cards.map((card) => (
-                          <Card key={card._id} card={card} onClick={onCardClick} onDeleteClick={onDeleteClick} onCardLike={handleCardLike} />
+                          <Card key={card._id} card={card} onClick={onCardClick} onCardDelete={handleCardDelete} onCardLike={handleCardLike} />
                         ))}
                       </div>
                     </section>
