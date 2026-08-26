@@ -28,6 +28,16 @@ export default function Main () {
       });
   },[]);
 
+  async function handleCardLike(card) {
+    const isLiked = card.isLiked;
+
+    await api.changeLikeCardStatus(card._id, !isLiked)
+      .then((newCard) => {
+        setCards((state) => state.map((currentCard) => currentCard._id === card._id ? newCard : currentCard));
+    })
+      .catch((error) => console.log(error));
+  }
+
   const currentUserInfo = useContext(currentUserContext);
 
   
@@ -101,7 +111,7 @@ export default function Main () {
                     <section className="gallery">
                       <div className="gallery__grid">
                         {cards.map((card) => (
-                          <Card key={card._id} card={card} onClick={onCardClick} onDeleteClick={onDeleteClick} />
+                          <Card key={card._id} card={card} onClick={onCardClick} onDeleteClick={onDeleteClick} onCardLike={handleCardLike} />
                         ))}
                       </div>
                     </section>
