@@ -32,15 +32,22 @@ function App() {
       await api.updateUserInfo(data).then((newData) => {
         setCurrentUser(newData);
         handleClosePopup();
-      });
+      })
+      .catch((err) => console.log(err));
     })();
   };
   
-  
+  const handleUpdateAvatar = (data) => {
+    api.updateAvatar(data).then((newData)=>{
+      setCurrentUser(newData);
+      handleClosePopup();
+    })
+    .catch((err) => console.log(err));
+  };
 
   return (
     
-    <currentUserContext.Provider value={{currentUser, handleUpdateUser}}>
+    <currentUserContext.Provider value={{currentUser, handleUpdateUser, handleUpdateAvatar}}>
     <div className="page">
           <Header/>
           <Main
