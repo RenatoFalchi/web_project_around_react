@@ -15,14 +15,14 @@ import RemoveCard from './components/Popup/components/RemoveCard/RemoveCard.jsx'
 
 export default function Main (props) {
   
-  const { popup, onOpenPopup, onClosePopup, cards, onCardLike, onCardDelete } = props;
+  const { popup, onOpenPopup, onClosePopup, cards, onCardLike, onCardDelete, onAddPlaceSubmit } = props;
 
   
 
   const { currentUser } = useContext(currentUserContext);
 
   
-  const newCardPopup = { title: "Novo Cartão", children: <NewCard/>}
+  const newCardPopup = { title: "Novo Cartão", children: <NewCard onAddPlaceSubmit={onAddPlaceSubmit}/>}
   const editProfilePopup = {title: "Editar Perfil", children: <EditProfile/>}
   const editAvatarPopup = {title: "Alterar a foto do perfil", children:<EditAvatar/>}
   const removeCardPopup = {title:"Tem Certeza?", children:<RemoveCard/>}

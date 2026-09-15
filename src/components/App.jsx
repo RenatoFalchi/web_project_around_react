@@ -44,7 +44,7 @@ function App() {
     })
     .catch((err) => console.log(err));
   };
-///////////////////////////////////////////////////////////////
+
   const [cards, setCards] = useState([]);
   
     useEffect(()=>{
@@ -74,7 +74,15 @@ function App() {
         })
         .catch((error) => console.log(error));
     }
-///////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////
+  const handleAddPlaceSubmit = (data) => {
+      api.addCard(data).then((newCard) => {
+        setCards([newCard, ...cards]);
+        handleClosePopup();
+      })
+      .catch((err) => console.log(err));
+  }    
+
   return (
     
     <currentUserContext.Provider value={{currentUser, handleUpdateUser, handleUpdateAvatar}}>
@@ -87,6 +95,7 @@ function App() {
             cards={cards}
             onCardLike={handleCardLike}
             onCardDelete={handleCardDelete}
+            onAddPlaceSubmit={handleAddPlaceSubmit}
             />
           <Footer/>
           
