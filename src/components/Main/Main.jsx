@@ -1,5 +1,4 @@
-import { useEffect, useState, useContext } from 'react'
-import api from "../../utils/api.jsx"
+import { useContext } from 'react'
 import { currentUserContext } from '../../contexts/CurrentUserContext.jsx'
 import imageButtonAvatar from '../../images/Content-Profile-EditAvatarButton.png'
 import imageButtonEditProfile from '../../images/Content-Profile-EditButton.png'
@@ -16,37 +15,9 @@ import RemoveCard from './components/Popup/components/RemoveCard/RemoveCard.jsx'
 
 export default function Main (props) {
   
-  const { popup, onOpenPopup, onClosePopup } = props;
+  const { popup, onOpenPopup, onClosePopup, cards, onCardLike, onCardDelete } = props;
 
-  const [cards, setCards] = useState([]);
-
-  useEffect(()=>{
-    api.getInitialCards()
-      .then((data)=>{
-        setCards(data);
-      })
-      .catch((err)=>{
-        console.log(err);
-      });
-  },[]);
-
-  async function handleCardLike(card) {
-    const isLiked = card.isLiked;
-
-    await api.changeLikeCardStatus(card._id, !isLiked)
-      .then((newCard) => {
-        setCards((state) => state.map((currentCard) => currentCard._id === card._id ? newCard : currentCard));
-    })
-      .catch((error) => console.log(error));
-  }
-
-  async function handleCardDelete (card) {
-    await api.deleteCard(card._id)
-      .then(()=>{
-        setCards((state) => state.filter((currentCard) => currentCard._id !== card._id));
-      })
-      .catch((error) => console.log(error));
-  }
+  
 
   const { currentUser } = useContext(currentUserContext);
 
@@ -71,7 +42,7 @@ export default function Main (props) {
     const imageContent = {
       children: <ImagePopup card={card}/>
     };
-    setPopup(imageContent);
+    onOpenPopup(imageContent);
   }
   
   
@@ -115,7 +86,7 @@ export default function Main (props) {
                     <section className="gallery">
                       <div className="gallery__grid">
                         {cards.map((card) => (
-                          <Card key={card._id} card={card} onClick={onCardClick} onCardDelete={handleCardDelete} onCardLike={handleCardLike} />
+                          <Card key={card._id} card={card} onClick={onCardClick} onCardDelete={onCardDelete} onCardLike={onCardLike} />
                         ))}
                       </div>
                     </section>
