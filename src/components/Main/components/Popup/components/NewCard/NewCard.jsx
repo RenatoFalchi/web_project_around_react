@@ -1,6 +1,32 @@
-export default function NewCard() {
+import { useState } from "react";
+
+export default function NewCard(props) {
+
+  const { onAddPlaceSubmit } = props;
+
+  const [placeTitle, setPlaceTitle] = useState("");
+  const [placeImage, setPlaceImage] = useState("");
+
+  const handleNewTitle = (event) => {
+    setPlaceTitle(event.target.value);
+  };
+
+  const handleNewImage = (event) => {
+    setPlaceImage(event.target.value);
+  };
+
+    function handleSubmit(e) {
+    e.preventDefault();
+    onAddPlaceSubmit({
+      name: placeTitle,
+      link: placeImage,
+    });
+    setPlaceTitle("");
+    setPlaceImage("");
+  }
+
     return(
-        <form className="popup__form" id="addForm" name="addCardForm" noValidate >
+        <form className="popup__form" id="addForm" name="addCardForm" noValidate onSubmit={handleSubmit} >
             <fieldset className="popup__form-fieldset">
               <div className="popup__form-fieldsetBox">
                 <input
@@ -12,6 +38,8 @@ export default function NewCard() {
                   maxLength="30"
                   required
                   name="placeTitle"
+                  value={placeTitle}
+                  onChange={handleNewTitle}
                 />
                 <span className="popup__form-error" id="placeTitle-error"></span>
               </div>
@@ -24,6 +52,8 @@ export default function NewCard() {
                   maxLength="2047"
                   required
                   name="placeImage"
+                  value={placeImage}
+                  onChange={handleNewImage}
                 />
                 <span className="popup__form-error" id="placeImage-error"></span>
               </div>
