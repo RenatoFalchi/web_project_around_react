@@ -1,70 +1,88 @@
 Tripleten web_project_around_react
 
-Sprint 13 — Introdução ao React 1️⃣ — Projeto: Sprint 13 — Renato Falchi Correia de Oliveira
+Sprint 14 — Introdução ao React 2️⃣ — Projeto: Sprint 14 — Renato Falchi Correia de Oliveira
 
-Este projeto dá continuidade ao desenvolvimento do Around The U.S., agora migrando a aplicação da versão em JavaScript puro (OOP) para React. O foco desta sprint foi reestruturar a interface em componentes reutilizáveis, controlar o estado da aplicação com hooks e implementar a exibição condicional dos popups através de um único componente genérico.
+Este projeto dá continuidade ao Around The U.S., conectando a aplicação React construída na Sprint 13 a uma API REST real. O foco desta sprint foi integrar chamadas assíncronas à API, gerenciar o estado da aplicação de forma centralizada através da Context API e da técnica de elevação de estado (lifting state up), e implementar as funcionalidades completas de curtir, deletar, editar perfil, editar avatar e criar novos cartões.
 
 2️⃣ — Objetivo do projeto
 
-Reconstruir a estrutura da aplicação utilizando React, com foco em:
+Conectar a interface construída na sprint anterior a uma API real, com foco em:
 
-Dividir a interface em componentes reutilizáveis (Card, Popup, formulários)
+Buscar os dados iniciais do usuário e dos cartões diretamente da API ao carregar a aplicação
 
-Controlar a exibição dos popups através de estado (useState) no componente principal
+Compartilhar os dados do usuário logado entre todos os componentes através da Context API (CurrentUserContext)
 
-Implementar um componente Popup genérico, capaz de renderizar diferentes conteúdos (formulários, imagem ampliada, confirmação de exclusão) via prop children
+Elevar o estado (cards e popup) para o componente App, centralizando o controle da aplicação e permitindo que múltiplos componentes leiam e modifiquem os mesmos dados
 
-Exibir o popup de imagem ampliada ao clicar em um cartão
+Implementar as chamadas de API para curtir/descurtir, deletar, criar cartões e atualizar perfil/avatar
 
-Exibir o popup de confirmação de exclusão ao clicar no botão de deletar um cartão
+Fechar os popups automaticamente após o sucesso de cada requisição à API
 
-Passar dados entre componentes filho e pai através de props e callbacks
+Utilizar tanto componentes gerenciados (useState) quanto refs (useRef) para capturar dados de formulários, dependendo do caso de uso
 
 3️⃣ — Funcionalidades implementadas
 
+🌐 Integração com a API
+
+Classe Api (utils/api.jsx) centraliza todas as chamadas HTTP: getUserInfo, getInitialCards, addCard, updateUserInfo, updateAvatar, changeLikeCardStatus e deleteCard
+
+Todas as requisições assíncronas utilizam async/await e/ou .then()/.catch() para tratamento de sucesso e erro
+
+🧩 Componente App
+
+Novo componente raiz da aplicação, responsável por:
+
+Buscar as informações do usuário (currentUser) e a lista de cartões (cards) via API ao carregar a aplicação (useEffect)
+
+Centralizar o estado popup e as funções handleOpenPopup / handleClosePopup
+
+Implementar os manipuladores handleUpdateUser, handleUpdateAvatar, handleCardLike, handleCardDelete e handleAddPlaceSubmit, todos fechando o popup automaticamente após o sucesso da requisição
+
+Disponibilizar currentUser, handleUpdateUser e handleUpdateAvatar via CurrentUserContext.Provider
+
+Passar popup, cards e os demais manipuladores para Main como props
+
+👤 CurrentUserContext
+
+Context API criado para compartilhar os dados do usuário logado (currentUser) e os manipuladores de atualização de perfil/avatar com qualquer componente da árvore, sem necessidade de repassar props manualmente em cada nível
+
 🖼️ Componente Main
 
-Componente principal da aplicação, responsável por:
+Recebe cards, popup e os manipuladores (onCardLike, onCardDelete, onAddPlaceSubmit, onOpenPopup, onClosePopup) via props, vindos de App
 
-Armazenar e renderizar a lista de cartões
+Consome currentUser através do CurrentUserContext
 
-Controlar qual popup está aberto no momento através de estado (popup)
-
-Centralizar as funções de abertura e fechamento dos popups (handleOpenPopup, handleClosePopup)
-
-Definir o conteúdo (title e children) de cada popup antes de abri-lo
+Renderiza a lista de cartões e monta o conteúdo de cada popup antes de abri-lo
 
 🃏 Componente Card
 
-Renderiza a imagem, o nome e os botões de curtir e deletar de cada cartão
+Aciona onCardLike e onCardDelete (recebidos via props) para curtir/descurtir e deletar cartões, refletindo o resultado da API imediatamente na interface
 
-Ao clicar na imagem, aciona o callback onClick recebido via props, abrindo o popup de imagem ampliada
+📝 Componente EditProfile
 
-Ao clicar no botão de deletar, aciona o callback onDeleteClick, abrindo o popup de confirmação de exclusão
+Formulário gerenciado (useState + onChange) para editar nome e descrição do perfil
 
-🪟 Componente Popup
+Usa os valores atuais de currentUser (via contexto) como valores iniciais dos campos
 
-Componente genérico e reutilizável, responsável por renderizar qualquer conteúdo de popup
+Ao submeter, chama handleUpdateUser, que atualiza os dados na API e fecha o popup
 
-Recebe title, children e onClose via props
+🖌️ Componente EditAvatar
 
-Alterna entre as classes de estilo popup__container e photoFrame__container dependendo do tipo de conteúdo exibido
+Formulário utilizando useRef para capturar o link da nova imagem de avatar diretamente do DOM, sem controlar o valor a cada digitação
 
-🖼️ Componente ImagePopup
+Ao submeter, chama handleUpdateAvatar (via contexto), que atualiza o avatar na API, reflete a mudança em currentUser e fecha o popup
 
-Exibe a imagem ampliada e a legenda do cartão clicado
+➕ Componente NewCard
 
-Recebe o cartão selecionado via props
+Formulário gerenciado (useState) com dois campos: título e link da imagem do novo cartão
+
+Ao submeter, chama onAddPlaceSubmit (recebido via props), que cria o cartão na API e o insere no início da lista de cards
+
+Limpa os campos do formulário após o envio bem-sucedido
 
 🗑️ Componente RemoveCard
 
-Renderizado dentro do Popup ao clicar no botão de deletar de um cartão
-
-Por enquanto, apenas exibe o botão de confirmação "Sim" (lógica de exclusão ainda não implementada)
-
-📝 Componentes de formulário (NewCard, EditProfile, EditAvatar)
-
-Renderizados dentro do Popup para adicionar novo cartão, editar informações do perfil e alterar o avatar
+Estrutura mantida para uma futura implementação de confirmação de exclusão (ainda não conectada ao fluxo de deleção, que atualmente ocorre diretamente ao clicar no botão de deletar)
 
 4️⃣ — Tecnologias utilizadas
 
@@ -72,11 +90,13 @@ HTML5 Estrutura semântica da aplicação.
 
 CSS3 Estilização com BEM, media queries, grid, flexbox e responsividade completa.
 
-JavaScript (ES6+) Manipulação de dados e lógica dos componentes.
+JavaScript (ES6+) Manipulação de dados, Promises, async/await e lógica dos componentes.
 
-React Componentização da interface, controle de estado com useState, comunicação entre componentes via props e callbacks.
+React Componentização da interface, hooks (useState, useEffect, useContext, useRef), Context API e elevação de estado (lifting state up).
 
 Vite Ambiente de build e desenvolvimento do projeto.
+
+API REST Integração com o backend do TripleTen (around-api) para persistência de usuário e cartões.
 
 GitHub Pages Hospedagem da versão final do projeto.
 
