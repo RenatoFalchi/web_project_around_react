@@ -1,5 +1,6 @@
 import { useContext } from 'react'
-import { currentUserContext } from '../../contexts/CurrentUserContext.jsx'
+/* import { currentUserContext } from '../../contexts/CurrentUserContext.js' */
+import { currentUserContext } from '../../contexts/CurrentUserContext.js'
 import imageButtonAvatar from '../../images/Content-Profile-EditAvatarButton.png'
 import imageButtonEditProfile from '../../images/Content-Profile-EditButton.png'
 import imageButtonAddCard from '../../images/Content-Profile-AddButton.png'
